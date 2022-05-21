@@ -14,8 +14,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-
+from django.urls import path,include
+#Importiamo la view
+from myFirstApp import views as primaAppViews
 urlpatterns = [
     path('admin/', admin.site.urls),
+    #path('homepage/',primaAppViews.homepage,name='home')
+    #Se vogliamo andare direttamente nella homepage specifichiamo questo percorso
+    #path('',primaAppViews.homepage,name='home')
+    #possiamo anche includere un file urls della nostra applicazione, dopo averlo creato
+    path('', include('myFirstApp.urls'))
 ]
